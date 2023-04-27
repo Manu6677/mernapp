@@ -3,12 +3,13 @@ import { useEffect } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
+import { BASE_URL } from "../utilities/helper";
 const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("/api/workouts");
+      const response = await fetch(`${BASE_URL}/api/workouts`);
       const json = await response.json(); // this parses the json now we have array of objects where as in database it was array of documents
       console.log("inside effect");
 
