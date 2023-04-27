@@ -53,9 +53,14 @@ const deleteWorkout = async (req, res) => {
 // update a workout
 const updateWorkout = async (req, res) => {
   if (ObjectId.isValid(req.params.id)) {
-    const updateWorkoutOne = await Workout.updateOne({
-      _id: new ObjectId(req.params.id),
-    });
+    const updateWorkoutOne = await Workout.updateOne(
+      {
+        _id: new ObjectId(req.params.id),
+      },
+      {
+        ...req.body,
+      }
+    );
     if (!updateWorkoutOne) {
       return res.status(400).json({ error: "No such error" });
     }
