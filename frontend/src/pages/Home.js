@@ -11,7 +11,6 @@ const Home = () => {
     const fetchWorkouts = async () => {
       const response = await fetch(`${BASE_URL}/api/workouts`);
       const json = await response.json(); // this parses the json now we have array of objects where as in database it was array of documents
-      console.log("inside effect");
 
       if (response.ok) {
         dispatch({ type: "SET_WORKOUTS", payload: json });
