@@ -111,3 +111,7 @@ div.error {
 .create {
   box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.05);
 }
+
+input.error {
+  border: 1px solid var(--error);
+}

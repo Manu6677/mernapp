@@ -27,6 +27,8 @@ const createWorkout = async (req, res) => {
 
   const { title, reps, load } = req.body;
   // here created the new data which user passed and passed in workout Model then workout snd to client
+
+  // add doc to Database
   try {
     const workout = await Workout.create({ title, reps, load });
     res.status(200).json(workout);
