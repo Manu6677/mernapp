@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-// import { BASE_URL } from "../utilities/helper";
+import { BASE_URL } from "../utilities/helper";
 
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext();
@@ -22,7 +22,7 @@ const WorkoutForm = () => {
     }
 
     const workout = { title, load, reps };
-    const response = await fetch("/api/workouts", {
+    const response = await fetch(`${BASE_URL}/api/workouts`, {
       method: "POST",
       body: JSON.stringify(workout), // we can not send workout object to backend as post req, so turn into json
       headers: {

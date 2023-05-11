@@ -1,5 +1,5 @@
 import React from "react";
-// import { BASE_URL } from "../utilities/helper";
+import { BASE_URL } from "../utilities/helper";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 // date fns
@@ -14,7 +14,7 @@ const WorkoutDetails = ({ workout }) => {
       return;
     }
 
-    const response = await fetch("api/workouts/" + workout._id, {
+    const response = await fetch(`${BASE_URL}/api/workouts/` + workout._id, {
       method: "DELETE",
       Authorization: `Bearer ${user.token}`,
     });

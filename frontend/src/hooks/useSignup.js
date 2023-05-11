@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext"; // it return user property and dispatch fn
-// import { BASE_URL } from "../utilities/helper";
+import { BASE_URL } from "../utilities/helper";
 export const useSignup = () => {
   const [error, setError] = useState(null);
   const [isLoading, setLoading] = useState(null); // to show this loading while req in the way to go and come with response
@@ -9,7 +9,7 @@ export const useSignup = () => {
   const signup = async (email, password) => {
     setLoading(true);
     setError(null);
-    const response = await fetch("api/user/signup", {
+    const response = await fetch(`${BASE_URL}/api/user/signup`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {
