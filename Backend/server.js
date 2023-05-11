@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const workoutRoutes = require("./routes/workout");
 const cors = require("cors");
+const userRoutes = require("./routes/user");
 
 // express app
 const app = express();
@@ -32,6 +33,7 @@ mongoose
 
 // routes
 app.use("/api/workouts", workoutRoutes);
+app.use("/api/user", userRoutes);
 
 /**
  IMP

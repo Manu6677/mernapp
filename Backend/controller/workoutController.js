@@ -3,7 +3,8 @@ const { ObjectId } = require("mongodb");
 
 // get all workouts
 const getWorkouts = async (req, res) => {
-  const allWorkout = await Workout.find({}).sort({ createdAt: -1 });
+  const userReq = req.user._id;
+  const allWorkout = await Workout.find({ userReq }).sort({ createdAt: -1 });
   res.status(200).json(allWorkout);
 };
 
@@ -30,7 +31,9 @@ const createWorkout = async (req, res) => {
 
   // add doc to Database
   try {
-    const workout = await Workout.create({ title, reps, load });
+    const userReq = req.user._id;
+
+    const workout = await Workout.create({ title, reps, load, userReq });
     res.status(200).json(workout);
   } catch (error) {
     res.status(400).json({ error: error.message });
