@@ -16,7 +16,9 @@ const WorkoutDetails = ({ workout }) => {
 
     const response = await fetch(`${BASE_URL}/api/workouts/` + workout._id, {
       method: "DELETE",
-      Authorization: `Bearer ${user.token}`,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
     });
 
     //  In here we have data of deleted document in database
